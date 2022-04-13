@@ -3,7 +3,7 @@ package com.adl.adlroomdb.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.adl.adlroomdb.MovieModel
+import com.adl.adlroomdb.database.model.MovieModel
 import com.adl.adlroomdb.R
 
 class MovieAdapter(val data :ArrayList<MovieModel>) : RecyclerView.Adapter<MovieViewHolder>() {

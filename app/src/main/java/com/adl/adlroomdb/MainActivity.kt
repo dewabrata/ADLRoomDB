@@ -5,17 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.DEBUG
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.adl.adlroomdb.adapter.MovieAdapter
 import com.adl.adlroomdb.database.PelangganDatabase
 import com.adl.adlroomdb.database.model.EntPelanggan
+import com.adl.adlroomdb.database.model.MovieModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.util.function.Consumer
 
 class MainActivity : AppCompatActivity() {
     lateinit var db:PelangganDatabase

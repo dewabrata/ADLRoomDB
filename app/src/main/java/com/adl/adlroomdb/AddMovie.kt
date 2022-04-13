@@ -4,9 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.adl.adlroomdb.R
+import com.adl.adlroomdb.database.model.MovieModel
 import kotlinx.android.synthetic.main.activity_add_movie.*
-import kotlinx.android.synthetic.main.item_movie.*
 
 class AddMovie : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

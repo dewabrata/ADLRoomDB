@@ -1,4 +1,4 @@
-package com.adl.adlroomdb
+package com.adl.adlroomdb.database.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
