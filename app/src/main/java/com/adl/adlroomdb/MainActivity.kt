@@ -9,10 +9,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.adl.adlroomdb.adapter.MovieAdapter
+import com.adl.adlroomdb.database.MovieDatabase
 import com.adl.adlroomdb.database.PelangganDatabase
 import com.adl.adlroomdb.database.model.EntPelanggan
 import com.adl.adlroomdb.database.model.MovieModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var db:PelangganDatabase
@@ -21,12 +24,20 @@ class MainActivity : AppCompatActivity() {
             result ->
         if(result.resultCode == Activity.RESULT_OK){
 
-            if(result.data?.hasExtra("data")!!){
-                lstMovie.add(result.data!!.extras?.getParcelable<MovieModel>("data")!!)
+//            if(result.data?.hasExtra("data")!!){
+//                lstMovie.add(result.data!!.extras?.getParcelable<MovieModel>("data")!!)
+//            }
+            GlobalScope.launch {
+
+                lstMovie.clear()
+                lstMovie.addAll(ArrayList(getAllData()))
+
+                this@MainActivity.runOnUiThread({
+                    movieadapter.notifyDataSetChanged()
+                })
+
+
             }
-
-            movieadapter.notifyDataSetChanged()
-
         }
     }
 
@@ -41,16 +52,35 @@ class MainActivity : AppCompatActivity() {
             PelangganDatabase::class.java, "pelanggandb"
         ).build()
 
-        movieadapter = MovieAdapter(lstMovie)
-        lstItemMovie.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = movieadapter
+        GlobalScope.launch {
+
+            lstMovie = ArrayList(getAllData())
+
+
+            this@MainActivity.runOnUiThread({
+                movieadapter = MovieAdapter(lstMovie)
+                lstItemMovie.apply {
+                    layoutManager = LinearLayoutManager(this@MainActivity)
+                    adapter = movieadapter
+                }
+            })
+
+
+
         }
+
+
 
         btnAddMovie.setOnClickListener({
             val intent = Intent(this@MainActivity,AddMovie::class.java)
             resultLauncher.launch(intent)
         })
+
+    }
+
+    fun getAllData():List<MovieModel>{
+
+        return MovieDatabase.getInstance(this@MainActivity).movieDao().getAll()
 
     }
 
