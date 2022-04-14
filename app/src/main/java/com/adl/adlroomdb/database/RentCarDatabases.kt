@@ -6,12 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.adl.adlroomdb.database.dao.PelangganDAO
 import com.adl.adlroomdb.database.dao.RentCar
-import com.adl.adlroomdb.database.model.Driver
-import com.adl.adlroomdb.database.model.DriverMobil
-import com.adl.adlroomdb.database.model.EntPelanggan
-import com.adl.adlroomdb.database.model.Mobil
+import com.adl.adlroomdb.database.model.*
 
-@Database( version = 1,entities = [Driver::class,Mobil::class])
+@Database(entities = [Driver::class,Mobil::class], views =[JumlahMobilDriver::class], version = 2)
 abstract class RentCarDatabases: RoomDatabase() {
     abstract fun daoRentCar():RentCar
 

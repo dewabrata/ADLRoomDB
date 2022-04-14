@@ -6,6 +6,7 @@ import android.util.Log
 import com.adl.adlroomdb.database.RentCarDatabases
 import com.adl.adlroomdb.database.model.Driver
 import com.adl.adlroomdb.database.model.DriverMobil
+import com.adl.adlroomdb.database.model.JumlahMobilDriver
 import com.adl.adlroomdb.database.model.Mobil
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,6 +18,7 @@ class RentCar : AppCompatActivity() {
         GlobalScope.launch {
 
             initData()
+
 
 
         }
@@ -34,6 +36,8 @@ class RentCar : AppCompatActivity() {
 
         val lstDriver:List<DriverMobil> = RentCarDatabases.getInstance(applicationContext).daoRentCar().getDriverMobil()
         Log.d("Driver",lstDriver.toString())
+        val lstMobile:List<JumlahMobilDriver> = RentCarDatabases.getInstance(applicationContext).daoRentCar().getJumlahMobilDriver()
+        Log.d("jml mobil",lstMobile.toString())
     }
 
 

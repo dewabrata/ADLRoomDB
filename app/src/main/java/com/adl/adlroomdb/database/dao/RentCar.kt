@@ -6,6 +6,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.adl.adlroomdb.database.model.Driver
 import com.adl.adlroomdb.database.model.DriverMobil
+import com.adl.adlroomdb.database.model.JumlahMobilDriver
 import com.adl.adlroomdb.database.model.Mobil
 
 @Dao
@@ -20,6 +21,9 @@ interface RentCar {
     @Transaction
     @Query("select * from Driver")
     fun getDriverMobil():List<DriverMobil>
+
+    @Query("select * from JumlahMobilDriver ")
+    fun getJumlahMobilDriver():List<JumlahMobilDriver>
 
 
 }
