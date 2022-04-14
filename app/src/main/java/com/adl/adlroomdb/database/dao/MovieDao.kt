@@ -7,6 +7,7 @@ import androidx.room.Query
 import com.adl.adlroomdb.database.model.EntPelanggan
 import com.adl.adlroomdb.database.model.MovieModel
 
+
 @Dao
 interface MovieDao {
 

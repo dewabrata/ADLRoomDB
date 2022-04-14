@@ -40,7 +40,7 @@ class MovieAdapter(val data :ArrayList<MovieModel>) : RecyclerView.Adapter<Movie
             data.addAll( ArrayList(MovieDatabase.getInstance(parent.context).movieDao().getAll()))
             val mainExecutor = ContextCompat.getMainExecutor(parent.context)
 
-// Execute a task in the main thread
+            // Execute a task in the main thread
             mainExecutor.execute {
                 // You code logic goes here.
             notifyDataSetChanged()
